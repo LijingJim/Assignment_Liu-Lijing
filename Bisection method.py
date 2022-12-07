@@ -1,116 +1,16 @@
+'''
+Created on 7 Dec. 2022.
+@author     : Lijing Liu (lliubo@connect.ust.hk)
+Description : Bisection method
+'''
+
 import numpy as np
+from scipy import optimize
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 
-# objective function
-def func(x):
-    return x**3-x**2-1
-# for loop solution
-def bisection(lowInt, uppInt, maxErr):
-    testArr = [] 
-    testArr.append((lowInt, uppInt))
-    
-    for a, b in testArr: 
-        try: # for boundary checking
-            if a>b or func(a)*func(b)>0 or func(a) == func(b) or abs(a-b) < maxErr:
-                raise ValueError
-        
-            if abs(func(a)*func(b)) < maxErr :
-                if abs(func(a)) < maxErr:
-                    return a
-                if abs(func(b)) < maxErr:
-                    return b
-                else:
-                    pass
-        except ValueError:
-            print("Interval setting is wrong")
-        
-        c = (a+b)/2
-        if abs(func(c)) < maxErr:
-            return c
-        if func(c)*func(b) < 0:
-            testArr.append((c,b)) 
-        else:
-            testArr.append((a,c))
+# 1) class 2) function 3) global variables and 4) function run
 
-xLow    = 1
-xUp     = 2
-epsilon = 10e-6
-print(bisection(xLow, xUp, epsilon))
-
-
-# for loop solution and figure/animation of finding root
-
-# using ggplot as style
-plt.style.use('ggplot') 
-# making function
-fun = lambda x: x**3-x**2-1
-x = np.arange(a,b,0.05)
-y = fun(x) 
-# create figure 
-fig = plt.figure(figsize = (15, 10))
-# x0
-list_x=[] 
-# |a-b|
-abs_list=[]
- 
-# while loop solution 
-def position_method(func=fun):
-    # counting
-    number=0
-    a=1
-    b=2
-    try:
-        #try mistake
-        if a>b or func(a)*func(b)>0 or func(a) == func(b) or abs(a-b) < 0.05:
-            raise ValueError
-        #try answer
-        if func(a)*func(b) == 0:
-            if func(a) == 0:
-                return a
-            else:
-                return b
-        # else we try to use False Position
-        while True:
-            number+=1
-            abs_list.append(abs(a-b))
-            # function creating
-            c=(a+b)/2
-            list_x.append(c)
-            # judgement
-            if func(c)==0:
-                return c
-            if func(c)*func(b)<0:
-                a=c
-            else:
-                b=c
-            if abs(func(a))<10e-6:
-                return a
-            if number >= 100:
-                print("too much numbers")
-                return None           
-    except ValueError:
-        print("wrong problem")
-        return None
- 
-# calculate x0 
-x0=position_method(fun)
-if x0 != None:   
-    print("answer x0 = ",x0)
-    print("f(x0) = ",fun(x0))
-plt.subplot(2,3,2)
-plt.xlim(a, b)
-plt.xlabel('X')
-plt.ylabel('Y')
-plt.title('rusult of root')
-plt.plot(x,y)
-text = "bisect method"
-if x0 != None:
-    plt.scatter(x0,fun(x0),c='black')
-    
-else:
-    plt.title('cannot converge on the interval')
-        
 class Fig:
     sub = None
     xlabel = None
@@ -118,8 +18,8 @@ class Fig:
     title = None
     plota = None
     plotb = None
-    lima = None
-    limb = None  
+    # lima = None
+    # limb = None  
     
     def __init__(self, sub, xlabel, ylabel, title, plota, plotb):    
         self.sub = sub
@@ -143,12 +43,117 @@ class Fig:
         Fig.plt_subfigure1(self)
         plt.xlim(lima,limb)
         return plt
+    
+    def plt_subfigure3(self,lima,limb,posx,posy):
+        Fig.plt_subfigure2(self,lima,limb)
+        plt.scatter(posx,posy,c='black')
+        
 
+# objective function
+def fun(x):
+    return x**3-x**2-1
+
+# for loop solution
+def Bisect_For(lowInt, uppInt, maxErr):
+    testArr = [] 
+    testArr.append((lowInt, uppInt))
+    
+    for a, b in testArr: 
+        try: # for boundary checking
+            if a>b or fun(a)*fun(b)>0 or fun(a) == fun(b) or abs(a-b) < maxErr:
+                raise ValueError
+        
+            if abs(fun(a)*fun(b)) < maxErr :
+                if abs(fun(a)) < maxErr:
+                    return a
+                if abs(fun(b)) < maxErr:
+                    return b
+                else:
+                    pass
+        except ValueError:
+            print("Interval setting is wrong")
+        
+        c = (a+b)/2
+        if abs(fun(c)) < maxErr:
+            return c
+        if fun(c)*fun(b) < 0:
+            testArr.append((c,b)) 
+        else:
+            testArr.append((a,c))
+
+# while loop solution 
+def Bisect_While(fun, lowInt, uppInt):
+    # counting
+    number = 0
+    a      = lowInt
+    b      = uppInt
+    
+    try:
+        #try mistake
+        if a>b or fun(a)*fun(b)>0 or fun(a) == fun(b) or abs(a-b) < 0.05:
+            raise ValueError
+        #try answer
+        if fun(a)*fun(b) == 0:
+            if func(a) == 0:
+                return a
+            else:
+                return b
+        # else we try to use False Position
+        while True:
+            number+=1
+            abs_list.append(abs(a-b))
+            # function creating
+            c=(a+b)/2
+            list_x.append(c)
+            # judgement
+            if fun(c)==0:
+                return c
+            if fun(c)*fun(b)<0:
+                a=c
+            else:
+                b=c
+            if abs(fun(a))<10e-6:
+                return a
+            if number >= 100:
+                print("too much numbers")
+                return None           
+    except ValueError:
+        print("wrong problem")
+        return None
+
+# Global Variables 
+xLow    = 1
+xUp     = 2 
+x = np.arange(xLow,xUp,0.05)
+y = fun(x)
+list_x=[] 
+abs_list=[]
+
+
+# Try for loop solution
+epsilon = 10e-6
+print(Bisect_For(xLow, xUp, epsilon))
+
+# Try while loop solution
+x0 = Bisect_While(fun, xLow, xUp)
+if x0 != None:   
+    print("answer = ",x0)
+    print("f(x0) = ",fun(x0))
+
+# Scipy solution
+root = optimize.bisect(fun, 1, 2)
+print("answer =", root)
+
+# plot and animation
+plt.style.use('ggplot') 
+fig = plt.figure(figsize = (15, 10))
 x1 = Fig(1,'X','Y','f(x)=x^3-x^2-1 figure', x , y )
+x2 = Fig(2,'X','Y','f(x)=x^3-x^2-1 figure', x , y )
 x3 = Fig(3,'times of try','xo','Convergence of x0',range(len(list_x)), list_x)
 x4 = Fig(4,'times of try','f(x)','Convergence of f(x)',range(len(list_x)), [fun(x) for x in list_x])
 x5 = Fig(5,'times of try','|a-b|','Convergence of |a-b|',range(len(list_x)), abs_list)
 x1.plt_subfigure2(1,2)
+x2.plt_subfigure3(1,2,x0,fun(x0))
 x3.plt_subfigure1()
 x4.plt_subfigure1()
 x5.plt_subfigure1()
