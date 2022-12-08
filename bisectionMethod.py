@@ -6,13 +6,12 @@ Description : Bisection method
 
 import numpy as np
 import matplotlib.pyplot as plt
-
 from figureClass import Fig
 
 # 1) class 2) function 3) global variables and 4) function run
         
 
-# objective function
+# objective functiongit
 def fun(x):
     return x**3-x**2-1
 
