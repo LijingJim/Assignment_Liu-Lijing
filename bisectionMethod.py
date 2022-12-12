@@ -128,11 +128,13 @@ def plotIteratoins(x0, y0, list_x, list_y, x, y, abs_list):
     x3 = Fig(3,'Iterations','xo','Convergence of x0',range(len(list_x)), list_x)
     x4 = Fig(4,'Iterations','f(x)','Convergence of f(x)',range(len(list_x)), list_y)
     x5 = Fig(5,'Iterations','|a-b|','Convergence of |a-b|',range(len(list_x)), abs_list)
+    x6 = Fig(6,'Iterations','log |a-b|','Convergence of log |a-b|',range(len(list_x)), np.log(abs_list))
     x1.plt_subfigure2(1,2)
     x2.plt_subfigure3(1, 2, x0, y0)
     x3.plt_subfigure1()
     x4.plt_subfigure1()
     x5.plt_subfigure1()
+    x6.plt_subfigure1()
 
     plt.show()
     return
@@ -169,6 +171,8 @@ def testBisection(testIndex):
         fig, ax                 = plt.subplots()
         ax.set_xlim(0,18)
         ax.set_ylim(1,2)
+        ax.set_xlabel('Iterations')
+        ax.set_ylabel('x')
         x_data    = []    
         y_data    = []
         
@@ -185,7 +189,7 @@ def testBisection(testIndex):
                                                 interval = 100,
                                                 repeat   = False
                                                 )
-        # animation.save("convergence.gif")
+        animation.save("convergence.gif")
         plt.show()
     return
 
