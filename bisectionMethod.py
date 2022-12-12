@@ -10,12 +10,22 @@ from figureClass import Fig
 
 # 1) class 2) function 3) global variables and 4) function run
         
-
-# objective functiongit
+# ===========================================
+# Function: function for test
+# input   : x
+# output  : x^3-x^2-1  
+#=============================================
 def fun(x):
     return x**3-x**2-1
 
-# for loop solution
+# ===========================================
+# Function: bisection method with for loop
+# inputs  : func      = function which will be computed
+#           lowInt    = upper bound of given interval for x
+#           uppInt    = upper bound of given interval for x
+#           maxErr    = maximum error for convergence
+# outputs : x0|func(x0) = 0
+#=============================================
 def Bisect_For(func, lowInt, uppInt, maxErr = 10e-6):
     testArr = [] 
     testArr.append((lowInt, uppInt))
@@ -43,7 +53,16 @@ def Bisect_For(func, lowInt, uppInt, maxErr = 10e-6):
         else:
             testArr.append((a,c))
 
-# while loop solution 
+# ===========================================
+# Function: bisection method with while loop
+# inputs  : func      = function which will be computed
+#           lowInt    = upper bound of given interval for x
+#           uppInt    = upper bound of given interval for x
+#           maxErr    = maximum error for convergence
+# outputs : x0|func(x0) = 0
+#           list_x    = evolution of x0
+#           abs_list  = | uppInt' - lowInt' |
+#=============================================
 def Bisect_While(func, lowInt, uppInt, maxErr = 10e-6):
     # counting
     number   = 0
@@ -86,6 +105,21 @@ def Bisect_While(func, lowInt, uppInt, maxErr = 10e-6):
         return None
 
 
+# ===========================================
+# Function: 5 figures (row:2, column:3)
+# inputs  : x0       = x0 |func(x0)=0
+#           y0       = fun(x0)
+#           list_x   = list of evolution in x0 |func(x0)=0 values
+#           list_y   = list of evolution in func(x0) values
+#           x        = list of x values  
+#           y        = list of y values
+#           abs_list = | uppInt' - lowInt' |
+# outputs : Figure(0,0) = x vs y
+#           Figure(0,1) = x vs y with x0 and y0
+#           Figure(0,2) = number of iterations vs list_x
+#           Figure(1,0) = number of iterations vs list_y
+#           Figure(1,1) = number of iterations vs abs_list
+#=============================================
 def plotIteratoins(x0, y0, list_x, list_y, x, y, abs_list):
     plt.style.use('ggplot') 
     fig = plt.figure(figsize = (15, 10))
@@ -102,18 +136,6 @@ def plotIteratoins(x0, y0, list_x, list_y, x, y, abs_list):
 
     plt.show()
     return
-
-
-def animation_demo(i, list_x):  
-    x_data    = []    
-    y_data    = []
-    line      = []
-    if i<17:
-        x_data.append(i+1)
-        y_data.append(list_x[i])
-        line.set_xdata(x_data)
-        line.set_ydata(y_data)
-    return line
 
 
 def testBisection(testIndex):
@@ -147,8 +169,24 @@ def testBisection(testIndex):
         fig, ax                 = plt.subplots()
         ax.set_xlim(0,18)
         ax.set_ylim(1,2)
-        animation               = FuncAnimation(fig, func = animation_demo, frames= 20, interval = 1000)
+        x_data    = []    
+        y_data    = []
         
+        def animation_demo(i):     
+            if i<len(list_x)-1:
+                x_data.append(i+1)
+                y_data.append(list_x[i])
+                ax.plot(x_data, y_data, color='r')
+            return 
+
+        animation               = FuncAnimation(fig, 
+                                                func     = animation_demo, 
+                                                frames   = len(list_x), 
+                                                interval = 100,
+                                                repeat   = False
+                                                )
+        # animation.save("convergence.gif")
+        plt.show()
     return
 
 ############
@@ -160,7 +198,6 @@ def testBisection(testIndex):
 # testIndex = 4 : for testing animation
 ############
 
-testBisection(3)
+testBisection(4)
 
 
-# # animation.save("C:\\Users\\A\\Desktop\\Dajung assignment\\convergence.gif",fps=20, writer='pillow')
