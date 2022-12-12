@@ -7,7 +7,9 @@ Description : Bisection method
 import numpy as np
 import matplotlib.pyplot as plt
 from figureClass import Fig
-
+from matplotlib import rc
+rc('font',**{'family':'serif'})
+rc('text', usetex=True)
 # 1) class 2) function 3) global variables and 4) function run
         
 # ===========================================
@@ -123,21 +125,32 @@ def Bisect_While(func, lowInt, uppInt, maxErr = 10e-6):
 def plotIteratoins(x0, y0, list_x, list_y, x, y, abs_list):
     plt.style.use('ggplot') 
     fig = plt.figure(figsize = (15, 10))
-    x1 = Fig(1,'X','Y','f(x)=x^3-x^2-1 figure', x , y )
-    x2 = Fig(2,'X','Y','f(x)=x^3-x^2-1 figure', x , y )
-    x3 = Fig(3,'Iterations','xo','Convergence of x0',range(len(list_x)), list_x)
-    x4 = Fig(4,'Iterations','f(x)','Convergence of f(x)',range(len(list_x)), list_y)
-    x5 = Fig(5,'Iterations','|a-b|','Convergence of |a-b|',range(len(list_x)), abs_list)
+    x1 = Fig(1,'X','Y',r'$f(x)=x^3-x^2-1$', x , y )
+    x2 = Fig(2,'X','Y',r'$f(x)=x^3-x^2-1$', x , y )
+    x3 = Fig(3,'Iterations',r'$x_{0}$',r'Convergence of $x_{0}$',range(len(list_x)), list_x)
+    x4 = Fig(4,'Iterations',r'$f(x)$',r'Convergence of $f(x)$',range(len(list_x)), list_y)
+    x5 = Fig(5,'Iterations',r'$|a-b|$',r'Convergence of $|a-b|$',range(len(list_x)), abs_list)
+    x6 = Fig(6,'Iterations',r'log $|a-b|$',r'Convergence of log $|a-b|$',range(len(list_x)), np.log(abs_list))
     x1.plt_subfigure2(1,2)
     x2.plt_subfigure3(1, 2, x0, y0)
     x3.plt_subfigure1()
     x4.plt_subfigure1()
     x5.plt_subfigure1()
+    x6.plt_subfigure1()
 
     plt.show()
     return
 
 
+# ===========================================
+# Function: code test
+# inputs  : testIndex
+# outputs : testIndex = 0 : for testing bisection method with scipy optimization 
+#           testIndex = 1 : for testing bisection method with for loop
+#           testIndex = 2 : for testing bisection method with while loop 
+#           testIndex = 3 : for testing visualization
+#           testIndex = 4 : for testing animation
+#=============================================
 def testBisection(testIndex):
 # Global Variables 
     xLow     = 1
@@ -169,6 +182,8 @@ def testBisection(testIndex):
         fig, ax                 = plt.subplots()
         ax.set_xlim(0,18)
         ax.set_ylim(1,2)
+        ax.set_xlabel('Iterations')
+        ax.set_ylabel('x')
         x_data    = []    
         y_data    = []
         
@@ -198,6 +213,6 @@ def testBisection(testIndex):
 # testIndex = 4 : for testing animation
 ############
 
-testBisection(4)
+testBisection(3)
 
 
