@@ -125,21 +125,12 @@ def Bisect_While(func, lowInt, uppInt, maxErr = 10e-6):
 def plotIteratoins(x0, y0, list_x, list_y, x, y, abs_list):
     plt.style.use('ggplot') 
     fig = plt.figure(figsize = (15, 10))
-<<<<<<< HEAD
-    x1 = Fig(1,'X','Y','f(x)=x^3-x^2-1 figure', x , y )
-    x2 = Fig(2,'X','Y','f(x)=x^3-x^2-1 figure', x , y )
-    x3 = Fig(3,'Iterations','xo','Convergence of x0',range(len(list_x)), list_x)
-    x4 = Fig(4,'Iterations','f(x)','Convergence of f(x)',range(len(list_x)), list_y)
-    x5 = Fig(5,'Iterations','|a-b|','Convergence of |a-b|',range(len(list_x)), abs_list)
-    x6 = Fig(6,'Iterations','log |a-b|','Convergence of log |a-b|',range(len(list_x)), np.log(abs_list))
-=======
     x1 = Fig(1,'X','Y',r'$f(x)=x^3-x^2-1$', x , y )
     x2 = Fig(2,'X','Y',r'$f(x)=x^3-x^2-1$', x , y )
     x3 = Fig(3,'Iterations',r'$x_{0}$',r'Convergence of $x_{0}$',range(len(list_x)), list_x)
     x4 = Fig(4,'Iterations',r'$f(x)$',r'Convergence of $f(x)$',range(len(list_x)), list_y)
     x5 = Fig(5,'Iterations',r'$|a-b|$',r'Convergence of $|a-b|$',range(len(list_x)), abs_list)
     x6 = Fig(6,'Iterations',r'log $|a-b|$',r'Convergence of log $|a-b|$',range(len(list_x)), np.log(abs_list))
->>>>>>> 2a2dc1cc10f401f58b2d772bb8d7e9409b2315eb
     x1.plt_subfigure2(1,2)
     x2.plt_subfigure3(1, 2, x0, y0)
     x3.plt_subfigure1()
