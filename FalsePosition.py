@@ -200,7 +200,7 @@ def testPosition(testIndex):
 
 ############
 # testBisection(textIndex)
-# testIndex = 0 : for testing bisection method with scipy optimization as comparasion
+# testIndex = 0 : for testing output of bisection method with scipy optimization as comparasion with false position method
 # testIndex = 1 : for testing false position method with for loop
 # testIndex = 2 : for testing false position method with while loop 
 # testIndex = 3 : for testing visualization
