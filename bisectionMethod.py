@@ -200,7 +200,7 @@ def testBisection(testIndex):
                                                 interval = 100,
                                                 repeat   = False
                                                 )
-        animation.save("convergence.gif")
+        animation.save("convergence_bisect.gif")
         plt.show()
     return
 
