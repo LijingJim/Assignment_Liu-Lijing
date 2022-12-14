@@ -1,3 +1,9 @@
+'''
+Created on 14 Dec. 2022.
+@author     : Lijing Liu (lliubo@connect.ust.hk)
+Description : False Position method
+'''
+
 import numpy as np
 import matplotlib.pyplot as plt
 from figureClass import Fig
