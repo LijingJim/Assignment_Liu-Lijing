@@ -155,9 +155,9 @@ def TimeCal(func):
 # ===========================================
 # Function: code test
 # inputs  : testIndex
-# outputs : testIndex = 0 : for testing bisection method with scipy optimization 
-#           testIndex = 1 : for testing bisection method with for loop
-#           testIndex = 2 : for testing bisection method with while loop 
+# outputs : testIndex = 0 : for testing false position method with scipy optimization 
+#           testIndex = 1 : for testing false position method with for loop
+#           testIndex = 2 : for testing false position method with while loop 
 #           testIndex = 3 : for testing visualization
 #           testIndex = 4 : for testing animation
 #=============================================
