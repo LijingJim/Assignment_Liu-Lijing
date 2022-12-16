@@ -8,6 +8,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 from figureClass import Fig
 from matplotlib import rc
+# import datetime
+import time
 rc('font',**{'family':'serif'})
 rc('text', usetex=True)
 # 1) class 2) function 3) global variables and 4) function run
@@ -141,6 +143,14 @@ def plotIteratoins(x0, y0, list_x, list_y, x, y, abs_list):
     plt.show()
     return
 
+# Timer Function
+def TimeCal(func):
+    def wrapper(*args):
+        start = time.time()
+        func(*args)
+        end = time.time()
+        print('time cost: %.8f'%(end-start))
+    return wrapper
 
 # ===========================================
 # Function: code test
@@ -151,6 +161,7 @@ def plotIteratoins(x0, y0, list_x, list_y, x, y, abs_list):
 #           testIndex = 3 : for testing visualization
 #           testIndex = 4 : for testing animation
 #=============================================
+@TimeCal
 def testPosition(testIndex):
 # Global Variables 
     xLow     = 1
@@ -202,7 +213,8 @@ def testPosition(testIndex):
                                                 )
         animation.save("convergence_position.gif")
         plt.show()
-    return
+    return 
+
 
 ############
 # testBisection(textIndex)
@@ -213,4 +225,4 @@ def testPosition(testIndex):
 # testIndex = 4 : for testing animation
 ############
 
-testPosition(4)
+testPosition(2)
