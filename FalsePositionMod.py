@@ -1,7 +1,7 @@
 '''
-Created on 14 Dec. 2022.
+Created on 20 Dec. 2022.
 @author     : Lijing Liu (lliubo@connect.ust.hk)
-Description : False Position method
+Description : False Position modified method
 '''
 
 import numpy as np
@@ -23,7 +23,7 @@ def fun(x):
     return x**3-x**2-1
 
 # ===========================================
-# Function: False Position method with for loop
+# Function: False Position modified method with for loop
 # inputs  : func      = function which will be computed
 #           lowInt    = upper bound of given interval for x
 #           uppInt    = upper bound of given interval for x
@@ -33,6 +33,7 @@ def fun(x):
 def Position_For(func, lowInt, uppInt, maxErr = 10e-6):
     testArr = [] 
     testArr.append((lowInt, uppInt))
+    d = 0
     
     for a, b in testArr: 
         try: # for boundary checking
@@ -49,16 +50,26 @@ def Position_For(func, lowInt, uppInt, maxErr = 10e-6):
         except ValueError:
             print("Interval setting is wrong")
         
-        c = (b*func(a)-a*func(b))/(func(a)-func(b))
+        if d == 0:
+            c = b-func(b)*((b-a)/(func(b)-func(a)))
+        elif d == 1:
+            c = b-func(b)/2*((b-a)/(func(b)/2-func(a)))
+        elif d == 2:
+            c = b-func(b)*((b-a)/(func(b)-func(a)/2))
+        else:
+            return None
+        
         if abs(func(c)) < maxErr:
             return c
-        if func(c)*func(b) < 0:
-            testArr.append((c,b)) 
+        elif func(c)*func(b) < 0:
+            testArr.append((c,b))
+            d = 1 
         else:
             testArr.append((a,c))
+            d = 2 
 
 # ===========================================
-# Function: False Positon method with while loop
+# Function: False Positon modified method with while loop
 # inputs  : func      = function which will be computed
 #           lowInt    = upper bound of given interval for x
 #           uppInt    = upper bound of given interval for x
@@ -74,6 +85,7 @@ def Position_While(func, lowInt, uppInt, maxErr = 10e-6):
     b        = uppInt
     list_x   = [] 
     abs_list = []
+    d        = 0
     
     try:
         #try mistake
@@ -89,16 +101,24 @@ def Position_While(func, lowInt, uppInt, maxErr = 10e-6):
         while True:
             number+=1
             abs_list.append(abs(a-b))
-            # funcction creating
-            c=(b*func(a)-a*func(b))/(func(a)-func(b))
+            # function creating
+            if d == 0:
+                c=(b*func(a)-a*func(b))/(func(a)-func(b))
+            elif d == 1:
+                c = b-func(b)/2*((b-a)/(func(b)/2-func(a)))
+            elif d == 2:
+                c = b-func(b)*((b-a)/(func(b)-func(a)/2))
+            
             list_x.append(c)
             # judgement
             if func(c)==0:
                 return c, list_x, abs_list 
             if func(c)*func(b)<0:
-                a=c
+                a = c
+                d = 1
             else:
-                b=c
+                b = c
+                d = 2 
             if abs(func(a)) < maxErr:
                 return a, list_x, abs_list  # final solution
             if number >= 100:
@@ -211,7 +231,7 @@ def testPosition(testIndex):
                                                 interval = 100,
                                                 repeat   = False
                                                 )
-        animation.save("convergence_position.gif")
+        # animation.save("convergence_positionmod.gif")
         plt.show()
     return 
 
@@ -225,4 +245,4 @@ def testPosition(testIndex):
 # testIndex = 4 : for testing animation
 ############
 
-testPosition(1)
+testPosition(4)
