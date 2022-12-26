@@ -225,4 +225,4 @@ def testPosition(testIndex):
 # testIndex = 4 : for testing animation
 ############
 
-testPosition(1)
+testPosition(4)
