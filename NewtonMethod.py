@@ -63,9 +63,9 @@ def Newton_For(func1,func2,x0,maxErr = 10e-6):
 def Newton_While(func1, func2, x0, maxErr = 10e-6):
     # counting
     number   = 0
-    list_x   = [x0] 
+    list_x   = [] 
     list_y   = []
-    
+    list_x.append(x0)
     try:
         #try mistake
         if abs(func1(x0)) < maxErr:
@@ -180,10 +180,10 @@ def testPosition(testIndex):
         ax.set_ylabel('x')
         x_data    = []    
         y_data    = []
-        
+        # x_data.append(0)
         def animation_demo(i):     
-            if i<len(list_x)-1:
-                x_data.append(i+1)
+            if i<len(list_x):
+                x_data.append(i)
                 y_data.append(list_x[i])
                 ax.plot(x_data, y_data, color='r')
             return 
