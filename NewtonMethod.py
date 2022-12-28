@@ -38,6 +38,7 @@ def fun1(x):
 #=============================================
 def Newton_For(func1,func2,x0,maxErr = 10e-6):
     testArr = [] 
+    abs_list = []
     testArr.append(x0)
     
     for x0 in testArr: 
@@ -48,10 +49,12 @@ def Newton_For(func1,func2,x0,maxErr = 10e-6):
             print("Initial setting is wrong")
         
         x=x0-func1(x0)/func2(x0)
+        a = x-x0
         if abs(func1(x)) < maxErr:
             return x
         else:
             testArr.append(x)
+            abs_list.append(abs(a))
 
 # ===========================================
 # Function: Newton's method with while loop
@@ -65,14 +68,16 @@ def Newton_While(func1, func2, x0, maxErr = 10e-6):
     number   = 0
     list_x   = [] 
     list_y   = []
+    list_abs = []
     list_x.append(x0)
+    list_abs.append(0)
     try:
         #try mistake
         if abs(func1(x0)) < maxErr:
             raise ValueError
         #try answer
         if func1(x0) == 0:
-            return x0, list_x, list_y 
+            return x0, list_x, list_y, list_abs
         # else we try to use Newton's Position
         while True:
             number+=1
@@ -80,13 +85,14 @@ def Newton_While(func1, func2, x0, maxErr = 10e-6):
             # funcction creating
             c=x0-func1(x0)/func2(x0)
             list_x.append(c)
+            list_abs.append(abs(c-x0))
             # judgement
             if func1(c)==0:
-                return c, list_x, list_y 
+                return c, list_x, list_y, list_abs 
             else:
                 x0=c
             if abs(func1(c)) < maxErr:
-                return x0, list_x, list_y  # final solution
+                return x0, list_x, list_y, list_abs  # final solution
             if number >= 100:
                 print("too much numbers")
                 return None           
@@ -108,14 +114,14 @@ def Newton_While(func1, func2, x0, maxErr = 10e-6):
 #           Figure(0,2) = number of iterations vs list_x
 #           Figure(1,0) = number of iterations vs list_y
 #=============================================
-def plotIteratoins(x0, y0, list_x, list_y, x, y):
+def plotIteratoins(x0, y0, list_x, list_abs, x, y):
     plt.style.use('ggplot') 
     fig = plt.figure(figsize = (15, 10))
     x1 = Fig(1,'X','Y',r'$f(x)=x^3-x^2-1$', x , y )
     x2 = Fig(2,'X','Y',r'$f(x)=x^3-x^2-1$', x , y )
     x3 = Fig(3,'Iterations',r'$x_{0}$',r'Convergence of $x_{0}$',range(len(list_x)), list_x)
-    x4 = Fig(4,'Iterations',r'$f(x)$',r'Convergence of $f(x)$',range(len(list_x)), list_y)
-    x5 = Fig(5,'Iterations',r'log $y$',r'Convergence of log $y$',range(len(list_x)), np.log(list_y))
+    x4 = Fig(4,'Iterations',r'$f(x)$',r'Convergence of $|Xn-Xn-1|$',range(len(list_x)), list_abs)
+    x5 = Fig(5,'Iterations',r'log $y$',r'Convergence of log $|Xn-Xn-1|$',range(len(list_x)), np.log(list_abs))
     
     x1.plt_subfigure2(1,2)
     x2.plt_subfigure3(1, 2, x0, y0)
@@ -162,22 +168,22 @@ def testPosition(testIndex):
         root, list_x, list_y = Newton_While(fun, fun1, 1)
         print("answer =", root)
     elif testIndex == 3:
-        root, list_x, list_y = Newton_While(fun, fun1, 1)
+        root, list_x, list_y, list_abs = Newton_While(fun, fun1, 1)
         xRoot  = root 
         yRoot  = fun(root)
         x      = np.arange(xLow,xUp,stepSize)
         y      = fun(x)
         list_x = np.array(list_x)
-        list_y = fun(list_x)
-        plotIteratoins(xRoot, yRoot, list_x, list_y, x, y)
+        # list_y = fun(list_x)
+        plotIteratoins(xRoot, yRoot, list_x, list_abs, x, y)
     elif testIndex == 4:
         from matplotlib.animation import FuncAnimation
-        root, list_x, list_y = Newton_While(fun, fun1, 1)
+        root, list_x, list_y, list_abs = Newton_While(fun, fun1, 1)
         fig, ax                 = plt.subplots()
         ax.set_xlim(0,6)
         ax.set_ylim(1,2)
         ax.set_xlabel('Iterations')
-        ax.set_ylabel('x')
+        ax.set_ylabel('X')
         x_data    = []    
         y_data    = []
         # x_data.append(0)
