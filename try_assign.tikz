@@ -1,0 +1,356 @@
+
+%%% Preamble Requirements %%%
+% \usepackage{geometry}
+% \usepackage{amsfonts}
+% \usepackage{amsmath}
+% \usepackage{amssymb}
+% \usepackage{tikz}
+
+% Optional packages such as sfmath set through python interface
+% \usepackage{sfmath}
+
+% \usetikzlibrary{arrows,chains,positioning,scopes,shapes.geometric,shapes.misc,shadows}
+
+%%% End Preamble Requirements %%%
+
+\input{"E:/art/anaconda/lib/site-packages/pyxdsm/diagram_styles"}
+\begin{tikzpicture}
+
+\matrix[MatrixSetup]{
+%Row 0
+&
+\node [DataIO] (output_MI) {$\begin{array}{c}m_0 , \Delta t\end{array}$};&
+&
+&
+\node [DataIO] (output_CMCC) {$\begin{array}{c}h^* , M^*, CAS^*\end{array}$};&
+\node [DataIO] (output_FD) {$\begin{array}{c}\Vec{r_0} , \Vec{W}V_0, \Vec{a_0}\end{array}$};&
+&
+&
+&
+&
+&
+&
+\node [DataIO] (output_AEM) {$\begin{array}{c}S_{wing}, \alpha, \eta\end{array}$};&
+\node [DataIO] (output_PM) {$\begin{array}{c}BPR , n_{eng}, F_{T_{ref}}\end{array}$};&
+\\
+%Row 1
+\node [DataIO] (left_output_MI) {$\begin{array}{c}m_{fuel} , m_{ZFW}\end{array}$};&
+\node [MDA] (MI) {$\text{Misson Integration}$};&
+\node [DataInter] (MI-MM) {$m$};&
+&
+&
+\node [DataInter] (MI-FD) {$\Delta t$};&
+&
+&
+&
+&
+&
+&
+&
+&
+\\
+%Row 2
+&
+\node [DataInter] (MM-MI) {$\begin{array}{c}\Vec{W} , \Delta m_{fuel}\end{array}$};&
+\node [Function] (MM) {$\text{Mass Model}$};&
+&
+&
+&
+&
+&
+&
+&
+\node [DataInter] (MM-EOM) {$\Vec{W}$};&
+&
+&
+&
+\\
+%Row 3
+&
+\node [DataInter] (GM-MI) {$\Vec{g}$};&
+\node [DataInter] (GM-MM) {$\Vec{g}$};&
+\node [Function] (GM) {$\text{Gravitational Model}$};&
+&
+&
+&
+&
+&
+&
+&
+&
+&
+&
+\\
+%Row 4
+&
+&
+&
+&
+\node [Function] (CMCC) {$\text{Constant Mach/CAS Conditions}$};&
+&
+&
+\node [DataInter] (CMCC-AV) {$\alpha$};&
+&
+&
+&
+&
+\node [DataInter] (CMCC-AEM) {$\alpha$};&
+\node [DataInter] (CMCC-PM) {$\tau$};&
+\\
+%Row 5
+&
+&
+&
+\node [DataInter] (FD-GM) {$h$};&
+\node [DataInter] (FD-CMCC) {$h$};&
+\node [MDA] (FD) {$\text{Flight Dynamics}$};&
+\node [DataInter] (FD-IN) {$\Delta t$};&
+&
+&
+\node [DataInter] (FD-INT) {$\Delta t$};&
+\node [DataInter] (FD-EOM) {$\Vec{V}^E$};&
+\node [DataInter] (FD-AM) {$\begin{array}{c}h,V^E\end{array}$};&
+&
+&
+\\
+%Row 6
+&
+&
+&
+&
+&
+\node [DataInter] (IN-FD) {$\Vec{r}^E$};&
+\node [Function] (IN) {$Integrator$};&
+&
+&
+&
+&
+&
+&
+&
+\\
+%Row 7
+&
+&
+&
+&
+&
+&
+&
+\node [Function] (AV) {$\text{Angular Velocity}$};&
+\node [DataInter] (AV-BEF) {$\Vec{\omega}$};&
+&
+\node [DataInter] (AV-EOM) {$\Vec{\omega}$};&
+&
+&
+&
+\\
+%Row 8
+&
+&
+&
+&
+&
+\node [DataInter] (BEF-FD) {$\Vec{V}^E$};&
+\node [DataInter] (BEF-IN) {$\Vec{V}^E$};&
+&
+\node [Function] (BEF) {$\begin{array}{c}\text{Body} \to \text{Earth} \\ \text{Frame}\end{array}$};&
+&
+&
+&
+&
+&
+\\
+%Row 9
+&
+&
+&
+&
+&
+&
+&
+&
+\node [DataInter] (INT-BEF) {$\Vec{V}$};&
+\node [Function] (INT) {$Integrator$};&
+&
+&
+&
+&
+\\
+%Row 10
+&
+&
+&
+&
+&
+\node [DataInter] (EOM-FD) {$\Vec{a}$};&
+&
+&
+&
+\node [DataInter] (EOM-INT) {$\Vec{a}$};&
+\node [Function] (EOM) {$\text{Equation of Motion}$};&
+&
+&
+&
+\\
+%Row 11
+&
+&
+&
+&
+\node [DataInter] (AM-CMCC) {$\begin{array}{c}M,V_{CAS}\end{array}$};&
+&
+&
+&
+&
+&
+&
+\node [Function] (AM) {$\text{Atmospheric Model}$};&
+\node [DataInter] (AM-AEM) {$\begin{array}{c}\rho, V_{TAS}\end{array}$};&
+\node [DataInter] (AM-PM) {$\begin{array}{c}\rho, p_{amb},T_{amb},M\end{array}$};&
+\\
+%Row 12
+&
+&
+&
+&
+&
+&
+&
+&
+&
+&
+\node [DataInter] (AEM-EOM) {$\Vec{F_A}$};&
+&
+\node [Function] (AEM) {$\text{Aerodynamic Model}$};&
+&
+\\
+%Row 13
+&
+&
+\node [DataInter] (PM-MM) {$\begin{array}{c}F_T,SFC\end{array}$};&
+&
+&
+&
+&
+&
+&
+&
+\node [DataInter] (PM-EOM) {$\Vec{F_T}$};&
+&
+&
+\node [Function] (PM) {$\text{Propulsion Model}$};&
+\\
+%Row 14
+&
+&
+&
+&
+&
+&
+&
+&
+&
+&
+&
+&
+&
+&
+\\
+};
+
+% XDSM process chains
+{ [start chain=process]
+ \begin{pgfonlayer}{process} 
+\chainin (MI);
+\chainin (CMCC) [join=by ProcessHVA];
+\chainin (FD) [join=by ProcessHVA];
+\chainin (AM) [join=by ProcessHVA];
+\chainin (AEM) [join=by ProcessHVA];
+\chainin (PM) [join=by ProcessHVA];
+\end{pgfonlayer}
+}{ [start chain=process]
+ \begin{pgfonlayer}{process} 
+\chainin (PM);
+\chainin (EOM) [join=by ProcessHVA];
+\chainin (INT) [join=by ProcessHVA];
+\chainin (BEF) [join=by ProcessHVA];
+\chainin (IN) [join=by ProcessHVA];
+\chainin (CMCC) [join=by ProcessHVA];
+\chainin (GM) [join=by ProcessHVA];
+\chainin (MM) [join=by ProcessHVA];
+\chainin (MI) [join=by ProcessHVA];
+\end{pgfonlayer}
+}
+
+\begin{pgfonlayer}{data}
+\path
+% Horizontal edges
+(MI) edge [DataLine] (MI-MM)
+(MM) edge [DataLine] (MM-MI)
+(GM) edge [DataLine] (GM-MM)
+(GM) edge [DataLine] (GM-MI)
+(FD) edge [DataLine] (FD-GM)
+(FD) edge [DataLine] (FD-CMCC)
+(FD) edge [DataLine] (FD-IN)
+(IN) edge [DataLine] (IN-FD)
+(MM) edge [DataLine] (MM-EOM)
+(PM) edge [DataLine] (PM-MM)
+(CMCC) edge [DataLine] (CMCC-AV)
+(CMCC) edge [DataLine] (CMCC-AEM)
+(CMCC) edge [DataLine] (CMCC-PM)
+(AM) edge [DataLine] (AM-CMCC)
+(MI) edge [DataLine] (MI-FD)
+(BEF) edge [DataLine] (BEF-FD)
+(EOM) edge [DataLine] (EOM-FD)
+(EOM) edge [DataLine] (EOM-INT)
+(FD) edge [DataLine] (FD-INT)
+(FD) edge [DataLine] (FD-EOM)
+(FD) edge [DataLine] (FD-AM)
+(BEF) edge [DataLine] (BEF-IN)
+(AV) edge [DataLine] (AV-BEF)
+(AV) edge [DataLine] (AV-EOM)
+(INT) edge [DataLine] (INT-BEF)
+(AEM) edge [DataLine] (AEM-EOM)
+(PM) edge [DataLine] (PM-EOM)
+(AM) edge [DataLine] (AM-AEM)
+(AM) edge [DataLine] (AM-PM)
+(MI) edge [DataLine] (left_output_MI)
+% Vertical edges
+(MI-MM) edge [DataLine] (MM)
+(MM-MI) edge [DataLine] (MI)
+(GM-MM) edge [DataLine] (MM)
+(GM-MI) edge [DataLine] (MI)
+(FD-GM) edge [DataLine] (GM)
+(FD-CMCC) edge [DataLine] (CMCC)
+(FD-IN) edge [DataLine] (IN)
+(IN-FD) edge [DataLine] (FD)
+(MM-EOM) edge [DataLine] (EOM)
+(PM-MM) edge [DataLine] (MM)
+(CMCC-AV) edge [DataLine] (AV)
+(CMCC-AEM) edge [DataLine] (AEM)
+(CMCC-PM) edge [DataLine] (PM)
+(AM-CMCC) edge [DataLine] (CMCC)
+(MI-FD) edge [DataLine] (FD)
+(BEF-FD) edge [DataLine] (FD)
+(EOM-FD) edge [DataLine] (FD)
+(EOM-INT) edge [DataLine] (INT)
+(FD-INT) edge [DataLine] (INT)
+(FD-EOM) edge [DataLine] (EOM)
+(FD-AM) edge [DataLine] (AM)
+(BEF-IN) edge [DataLine] (IN)
+(AV-BEF) edge [DataLine] (BEF)
+(AV-EOM) edge [DataLine] (EOM)
+(INT-BEF) edge [DataLine] (BEF)
+(AEM-EOM) edge [DataLine] (EOM)
+(PM-EOM) edge [DataLine] (EOM)
+(AM-AEM) edge [DataLine] (AEM)
+(AM-PM) edge [DataLine] (PM)
+(MI) edge [DataLine] (output_MI)
+(CMCC) edge [DataLine] (output_CMCC)
+(FD) edge [DataLine] (output_FD)
+(AEM) edge [DataLine] (output_AEM)
+(PM) edge [DataLine] (output_PM);
+\end{pgfonlayer}
+
+\end{tikzpicture}

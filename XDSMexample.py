@@ -14,7 +14,7 @@ from pyxdsm.XDSM import (
 )
 
 x = XDSM()
-#Lijing Optimization
+# Optimization
 x.add_system("opt", OPT, r"\text{Optimizer}")
 x.add_system("DOE", DOE, r"\text{DOE}")
 x.add_system("MDA", SOLVER, r"\text{Newton}")
