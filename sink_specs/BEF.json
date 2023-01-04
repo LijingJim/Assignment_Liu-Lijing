@@ -1,0 +1,9 @@
+{
+  "inputs": [
+    "\\Vec{\\omega}",
+    "\\Vec{V}"
+  ],
+  "outputs": [
+    "\\Vec{V}^E"
+  ]
+}

@@ -1,9 +1,8 @@
 {
   "inputs": [
-    "y_1, y_2"
+    "\\alpha"
   ],
   "outputs": [
-    "h",
-    "h^*"
+    "\\Vec{\\omega}"
   ]
 }

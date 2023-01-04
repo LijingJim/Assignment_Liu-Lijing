@@ -1,0 +1,11 @@
+{
+  "inputs": [
+    "h,V^E"
+  ],
+  "outputs": [
+    "V_{TAS}",
+    "M,V_{CAS}",
+    "p_{amb},T_{amb},M",
+    "\\rho"
+  ]
+}

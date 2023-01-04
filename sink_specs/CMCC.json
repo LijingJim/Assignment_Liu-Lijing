@@ -1,0 +1,11 @@
+{
+  "inputs": [
+    "M,V_{CAS}",
+    "h",
+    "h^* , M^*, CAS^*"
+  ],
+  "outputs": [
+    "\\tau",
+    "\\alpha"
+  ]
+}

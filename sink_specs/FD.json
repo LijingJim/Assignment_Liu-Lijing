@@ -1,0 +1,15 @@
+{
+  "inputs": [
+    "\\Vec{V}^E",
+    "\\Delta t",
+    "\\Vec{a}",
+    "\\Vec{r}^E",
+    "\\Vec{r_0} , \\Vec{W}V_0, \\Vec{a_0}"
+  ],
+  "outputs": [
+    "h,V^E",
+    "\\Delta t",
+    "\\Vec{V}^E",
+    "h"
+  ]
+}

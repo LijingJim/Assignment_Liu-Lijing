@@ -1,0 +1,9 @@
+{
+  "inputs": [
+    "\\Delta t",
+    "\\Vec{a}"
+  ],
+  "outputs": [
+    "\\Vec{V}"
+  ]
+}

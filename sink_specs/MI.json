@@ -1,0 +1,12 @@
+{
+  "inputs": [
+    "\\Vec{W} , \\Delta m_{fuel}",
+    "\\Vec{g}",
+    "m_0 , \\Delta t"
+  ],
+  "outputs": [
+    "m_{fuel} , m_{ZFW}",
+    "\\Delta t",
+    "m"
+  ]
+}
