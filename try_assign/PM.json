@@ -2,8 +2,8 @@
   "inputs": [
     "\\rho",
     "BPR , n_{eng}, F_{T_{ref}}",
-    "\\tau",
-    "p_{amb},T_{amb},M"
+    "p_{amb},T_{amb},M",
+    "\\tau"
   ],
   "outputs": [
     "F_T,SFC",

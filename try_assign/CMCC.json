@@ -1,8 +1,8 @@
 {
   "inputs": [
-    "M,V_{CAS}",
+    "h",
     "h^* , M^*, CAS^*",
-    "h"
+    "M,V_{CAS}"
   ],
   "outputs": [
     "\\alpha",

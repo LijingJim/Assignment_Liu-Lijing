@@ -1,9 +1,9 @@
 {
   "inputs": [
     "\\Delta t",
-    "\\Vec{V}^E"
+    "\\Vec{a}"
   ],
   "outputs": [
-    "\\Vec{r}^E"
+    "\\Vec{V}"
   ]
 }
