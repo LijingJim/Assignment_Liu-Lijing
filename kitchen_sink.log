@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2022.2.4)  5 JAN 2023 07:23
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2022.2.4)  5 JAN 2023 07:25
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**try_assign.tex
-(./try_assign.tex
+**kitchen_sink.tex
+(./kitchen_sink.tex
 LaTeX2e <2020-10-01> patch level 4
 L3 programming layer <2021-02-18>
 (d:/Programs/texlive/2021/texmf-dist/tex/latex/base/article.cls
@@ -587,8 +587,8 @@ File: l3backend-pdftex.def 2021-03-18 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count291
 \l__pdf_internal_box=\box64
 )
-(./try_assign.aux)
-\openout1 = `try_assign.aux'.
+No file kitchen_sink.aux.
+\openout1 = `kitchen_sink.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 25.
 LaTeX Font Info:    ... okay on input line 25.
@@ -604,7 +604,6 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 25.
 LaTeX Font Info:    ... okay on input line 25.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 25.
 LaTeX Font Info:    ... okay on input line 25.
-
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -691,7 +690,7 @@ e
 ))
 Preview: Fontsize 10pt
 Preview: PDFoutput 1
-(./try_assign.tikz
+(./kitchen_sink.tikz
 (c:/Users/dah_j/AppData/Local/Programs/Python/Python37/Lib/site-packages/pyxdsm
 /diagram_styles.tex
 \pgf@layerbox@data=\box66
@@ -711,33 +710,31 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 22.
 (d:/Programs/texlive/2021/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Overfull \hbox (701.80455pt too wide) in paragraph at lines 356--356
+Overfull \hbox (228.87541pt too wide) in paragraph at lines 331--331
 [][] 
  []
 
 Preview: Tightpage -327680 -327680 327680 327680
 [1{d:/Programs/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}])
-(./try_assign.aux) ) 
+(./kitchen_sink.aux) ) 
 Here is how much of TeX's memory you used:
- 16173 strings out of 478994
- 329230 string characters out of 5857681
- 682261 words of memory out of 5000000
- 33348 multiletter control sequences out of 15000+600000
+ 16039 strings out of 478994
+ 326984 string characters out of 5857681
+ 660830 words of memory out of 5000000
+ 33216 multiletter control sequences out of 15000+600000
  407198 words of font info for 42 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 113i,21n,116p,418b,1023s stack positions out of 5000i,500n,10000p,200000b,80000s
-<d:/Programs/texlive/2021/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmmi10.pfb><d:/Programs/texlive/2021/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmss10.pfb><d:/Programs/texlive/2021/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmss8.pfb><d:/Programs/texlive/2021/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmssi10.pfb><d:/Programs/texlive/2021/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmssi8.pfb><d:/Programs/texlive/2021/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmsy10.pfb><d:/Programs/texlive/2021/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmsy7.pfb>
-Output written on ./try_assign.pdf (1 page, 69329 bytes).
+ 113i,21n,116p,420b,1151s stack positions out of 5000i,500n,10000p,200000b,80000s
+<d:/Programs/texlive/2021/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmss10.pfb><d:/Programs/texlive/2021/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmss8.pfb><d:/Programs/texlive/2021/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmssi10.pfb><d:/Programs/texlive/2021/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmsy10.pfb><d:/Programs/texlive/2021/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmsy7.pfb>
+Output written on ./kitchen_sink.pdf (1 page, 47838 bytes).
 PDF statistics:
- 63 PDF objects out of 1000 (max. 8388607)
- 36 compressed objects within 1 object stream
+ 55 PDF objects out of 1000 (max. 8388607)
+ 30 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  109 words of extra memory for PDF output out of 10000 (max. 10000000)
 

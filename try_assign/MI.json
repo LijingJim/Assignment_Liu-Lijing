@@ -6,7 +6,7 @@
   ],
   "outputs": [
     "m",
-    "\\Delta t",
-    "m_{fuel} , m_{ZFW}"
+    "m_{fuel} , m_{ZFW}",
+    "\\Delta t"
   ]
 }

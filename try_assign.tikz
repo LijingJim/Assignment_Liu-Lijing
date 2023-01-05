@@ -13,7 +13,7 @@
 
 %%% End Preamble Requirements %%%
 
-\input{"E:/art/anaconda/lib/site-packages/pyxdsm/diagram_styles"}
+\input{"C:/Users/dah_j/AppData/Local/Programs/Python/Python37/lib/site-packages/pyxdsm/diagram_styles"}
 \begin{tikzpicture}
 
 \matrix[MatrixSetup]{
@@ -23,7 +23,7 @@
 &
 &
 \node [DataIO] (output_CMCC) {$\begin{array}{c}h^* , M^*, CAS^*\end{array}$};&
-\node [DataIO] (output_FD) {$\begin{array}{c}\Vec{r_0} , \Vec{W}V_0, \Vec{a_0}\end{array}$};&
+\node [DataIO] (output_FD) {$\begin{array}{c}\Vec{r_0} , \Vec{V_0}, \Vec{a_0}\end{array}$};&
 &
 &
 &
@@ -35,7 +35,7 @@
 \\
 %Row 1
 \node [DataIO] (left_output_MI) {$\begin{array}{c}m_{fuel} , m_{ZFW}\end{array}$};&
-\node [MDA] (MI) {$\text{Misson Integration}$};&
+\node [MDA] (MI) {$\begin{array}{c}\text{Misson} \\ \text{Integration}\end{array}$};&
 \node [DataInter] (MI-MM) {$m$};&
 &
 &
@@ -52,7 +52,7 @@
 %Row 2
 &
 \node [DataInter] (MM-MI) {$\begin{array}{c}\Vec{W} , \Delta m_{fuel}\end{array}$};&
-\node [Function] (MM) {$\text{Mass Model}$};&
+\node [Function] (MM) {$\begin{array}{c}\text{Mass} \\ \text{Model}\end{array}$};&
 &
 &
 &
@@ -69,7 +69,7 @@
 &
 \node [DataInter] (GM-MI) {$\Vec{g}$};&
 \node [DataInter] (GM-MM) {$\Vec{g}$};&
-\node [Function] (GM) {$\text{Gravitational Model}$};&
+\node [Function] (GM) {$\begin{array}{c}\text{Gravitational} \\ \text{Model}\end{array}$};&
 &
 &
 &
@@ -86,7 +86,7 @@
 &
 &
 &
-\node [Function] (CMCC) {$\text{Constant Mach/CAS Conditions}$};&
+\node [ImplicitFunction] (CMCC) {$\begin{array}{c}\text{Constant Mach/CAS} \\ \text{Conditions}\end{array}$};&
 &
 &
 \node [DataInter] (CMCC-AV) {$\alpha$};&
@@ -103,7 +103,7 @@
 &
 \node [DataInter] (FD-GM) {$h$};&
 \node [DataInter] (FD-CMCC) {$h$};&
-\node [MDA] (FD) {$\text{Flight Dynamics}$};&
+\node [MDA] (FD) {$\begin{array}{c}\text{Flight} \\ \text{Dynamics}\end{array}$};&
 \node [DataInter] (FD-IN) {$\Delta t$};&
 &
 &
@@ -137,7 +137,7 @@
 &
 &
 &
-\node [Function] (AV) {$\text{Angular Velocity}$};&
+\node [Function] (AV) {$\begin{array}{c}\text{Angular} \\ \text{Velocity}\end{array}$};&
 \node [DataInter] (AV-BEF) {$\Vec{\omega}$};&
 &
 \node [DataInter] (AV-EOM) {$\Vec{\omega}$};&
@@ -188,7 +188,7 @@
 &
 &
 \node [DataInter] (EOM-INT) {$\Vec{a}$};&
-\node [Function] (EOM) {$\text{Equation of Motion}$};&
+\node [Function] (EOM) {$\begin{array}{c}\text{Equation} \\ \text{of Motion}\end{array}$};&
 &
 &
 &
@@ -205,7 +205,7 @@
 &
 &
 &
-\node [Function] (AM) {$\text{Atmospheric Model}$};&
+\node [Function] (AM) {$\begin{array}{c}\text{Atmospheric} \\ \text{Model}\end{array}$};&
 \node [DataInter] (AM-AEM) {$\begin{array}{c}\rho, V_{TAS}\end{array}$};&
 \node [DataInter] (AM-PM) {$\begin{array}{c}\rho, p_{amb},T_{amb},M\end{array}$};&
 \\
@@ -222,7 +222,7 @@
 &
 \node [DataInter] (AEM-EOM) {$\Vec{F_A}$};&
 &
-\node [Function] (AEM) {$\text{Aerodynamic Model}$};&
+\node [Metamodel] (AEM) {$\begin{array}{c}\text{Aerodynamic} \\ \text{Model}\end{array}$};&
 &
 \\
 %Row 13
@@ -239,7 +239,7 @@
 \node [DataInter] (PM-EOM) {$\Vec{F_T}$};&
 &
 &
-\node [Function] (PM) {$\text{Propulsion Model}$};&
+\node [Metamodel] (PM) {$\begin{array}{c}\text{Propulsion} \\ \text{Model}\end{array}$};&
 \\
 %Row 14
 &

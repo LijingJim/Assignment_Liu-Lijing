@@ -1,10 +1,10 @@
 {
   "inputs": [
-    "\\Vec{F_T}",
-    "\\Vec{W}",
     "\\Vec{\\omega}",
+    "\\Vec{V}^E",
     "\\Vec{F_A}",
-    "\\Vec{V}^E"
+    "\\Vec{W}",
+    "\\Vec{F_T}"
   ],
   "outputs": [
     "\\Vec{a}"

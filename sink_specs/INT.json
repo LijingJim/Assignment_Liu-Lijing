@@ -1,7 +1,7 @@
 {
   "inputs": [
-    "\\Delta t",
-    "\\Vec{a}"
+    "\\Vec{a}",
+    "\\Delta t"
   ],
   "outputs": [
     "\\Vec{V}"
