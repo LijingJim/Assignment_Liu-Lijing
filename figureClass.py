@@ -27,6 +27,14 @@ class Fig:
         plt.title(self.title)
         plt.plot(self.plota,self.plotb)
         return plt  
+    
+    def plt_subfigure0(self):
+        plt.subplot(2,3,self.sub)
+        plt.xlabel(self.xlabel)
+        plt.ylabel(self.ylabel)
+        plt.title(self.title)
+        plt.plot(self.plota,self.plotb, linestyle='--')
+        return plt  
 
     def plt_subfigure2(self,lima,limb):
         Fig.plt_subfigure1(self)
