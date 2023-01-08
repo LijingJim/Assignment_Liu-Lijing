@@ -1,10 +1,10 @@
 {
   "inputs": [
-    "\\alpha",
-    "S_{wing}",
     "\\rho",
+    "\\alpha",
     "V_{TAS}",
-    "\\eta"
+    "\\eta",
+    "S_{wing}"
   ],
   "outputs": [
     "\\Vec{F_A}"

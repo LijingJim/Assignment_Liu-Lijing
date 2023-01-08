@@ -1,11 +1,11 @@
 {
   "inputs": [
-    "\\Vec{g}",
+    "F_T,SFC",
     "m",
-    "F_T,SFC"
+    "\\Vec{g}"
   ],
   "outputs": [
-    "\\Vec{W} , \\Delta m_{fuel}",
-    "\\Vec{W}"
+    "\\Vec{W}",
+    "\\Vec{W} , \\Delta m_{fuel}"
   ]
 }

@@ -1,12 +1,12 @@
 {
   "inputs": [
+    "\\tau",
     "\\rho",
     "BPR , n_{eng}, F_{T_{ref}}",
-    "p_{amb},T_{amb},M",
-    "\\tau"
+    "p_{amb},T_{amb},M"
   ],
   "outputs": [
-    "F_T,SFC",
-    "\\Vec{F_T}"
+    "\\Vec{F_T}",
+    "F_T,SFC"
   ]
 }
